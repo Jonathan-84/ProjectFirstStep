@@ -27,31 +27,53 @@ math pow
             System.out.println("My name is " + myName );*/
 final byte Months = 12;
 final byte Percent = 100;
+int myPrincipal = 0;
+int mortgageLength = 0;
+
+float monthlyInt = 0;
+int numberPayments =0;
 
             Scanner scanner = new Scanner(System.in);
 
-            System.out.print("Principal:");
-            int myPrincipal = scanner.nextInt();
+      while(true) {
+          System.out.print("Principal:");
+          myPrincipal = scanner.nextInt();
+          if (myPrincipal >= 1000 && myPrincipal <= 1_000_000)
+              break;
+          System.out.println("Enter a value between 1000 and 1,000,000");
+      }
+
+      while(true) {
+          //annual interest rate ex.3.92
+          System.out.print("Annual Interest:");
+          float interest = scanner.nextFloat();
+          if (interest > 0 && interest <= 30) {
+              monthlyInt = interest / Percent / Months;
+              break;
+      }
+          System.out.println("Enter a value greater than 0 but less than or equal to 30");
+      }
+      while(true) {
+          System.out.print("year term:");
+          mortgageLength = scanner.nextInt();
+          if (mortgageLength > 1 && mortgageLength < 30) {
+              numberPayments = mortgageLength * Months;
+              break;
+          }
+          System.out.println("Enter a value between 1 and 30");
+
+      }
 
 
-            //annual interest rate ex.3.92
-            System.out.print("Annual Interest:");
-            float interest = scanner.nextFloat();
-            float monthlyInt = interest / Percent / Months;
-            System.out.println(monthlyInt);
-
-            System.out.print("year term:");
-            int mortgageLength = scanner.nextInt();
-            int numberPayments = mortgageLength * Months;
 
 //onthly cost is off/ the first part of the double mortgage was wrong...
-            double mortgage = myPrincipal *monthlyInt
-            / (1-Math.pow(1+monthlyInt,-numberPayments));
-            // monthly payment
+          double mortgage = myPrincipal * monthlyInt
+                  / (1 - Math.pow(1 + monthlyInt, -numberPayments));
+          // monthly payment
 
-            String mortgageForm = NumberFormat.getCurrencyInstance().format(mortgage);
-            System.out.println("Monthly Payment: " + mortgageForm + " .");
+          String mortgageForm = NumberFormat.getCurrencyInstance().format(mortgage);
+          System.out.println("Monthly Payment: " + mortgageForm + " .");
+      }
 
-        }
 
 }
