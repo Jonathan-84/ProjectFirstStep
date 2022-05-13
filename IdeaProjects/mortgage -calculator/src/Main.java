@@ -6,52 +6,48 @@ public class Main {
         public static void main(String[] args) {
 
             /*
-            prncipal, annual interest rate term length
-            Monthly mortgage total
+            Capture the user input, not restricted
+            Using the switch method
+            compare the inputed number with the /5 Fizz; /3 Buzz both
+            both 3 && 5 FizzBuzz
 
-            annuual interest rate... user entry / 100 then /12
+            if not divisible by 3 && 5, then print the users inputted number
+            figure out how to restrict the answer to only whole numbers
 
-math pow 
-            hints: principal * monthly interest rate
 
-            annual interest rate 3.92 example needs to be divided by 12
-             */
-           /* Scanner age = new Scanner(System.in);
-            System.out.print("age:");
-            byte myAge = age.nextByte();
-            System.out.println("I am " + myAge + " years old");
+       ;*/
 
-            Scanner name = new Scanner(System.in);
-            System.out.print("name:");
-            String myName = name.nextLine();
-            System.out.println("My name is " + myName );*/
-final byte Months = 12;
-final byte Percent = 100;
 
             Scanner scanner = new Scanner(System.in);
 
-            System.out.print("Principal:");
-            int myPrincipal = scanner.nextInt();
+            System.out.print("Input a number:");
+            int numInputted = scanner.nextInt();
+            System.out.println(numInputted);
+
+          /*  int buzz = numInputted / 3;
+            int fizz = numInputted / 5;*/
+
+           if (numInputted%5 == 0 && numInputted%3 == 0) {
+
+                System.out.println("FizzBuzz");
+            }
+
+              else if  (numInputted%3 == 0) {
+                   System.out.println("Buzz");
+               }
+               else if (numInputted%5 == 0) {
+                   System.out.println("Fizz");
+               }
+
+                   else {
+                System.out.println(numInputted);
+            }
+
+            }
 
 
-            //annual interest rate ex.3.92
-            System.out.print("Annual Interest:");
-            float interest = scanner.nextFloat();
-            float monthlyInt = interest / Percent / Months;
-            System.out.println(monthlyInt);
 
-            System.out.print("year term:");
-            int mortgageLength = scanner.nextInt();
-            int numberPayments = mortgageLength * Months;
 
-//onthly cost is off/ the first part of the double mortgage was wrong...
-            double mortgage = myPrincipal *monthlyInt
-            / (1-Math.pow(1+monthlyInt,-numberPayments));
-            // monthly payment
 
-            String mortgageForm = NumberFormat.getCurrencyInstance().format(mortgage);
-            System.out.println("Monthly Payment: " + mortgageForm + " .");
-
-        }
 
 }
